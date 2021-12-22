@@ -43,9 +43,8 @@ npx hardhat run --network iscp scripts/deploy-iota.ts
 
 2) Start the Bridge API 
 
-IOTA EVM Testnet
 ```bash
-npx hardhat run --network iscp scripts/deploy-iota.ts
+npm start
 ```
 
 3) Test it!
