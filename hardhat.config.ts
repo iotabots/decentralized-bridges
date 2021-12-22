@@ -42,6 +42,12 @@ const config: HardhatUserConfig = {
       accounts: privateKey,
       timeout: 120000,
     },
+    iotadefi: {
+      url: "https://evm.wasp.sc.iota-defi.com/",
+      chainId: 1075,
+      accounts: privateKey,
+      timeout: 120000,
+    },
     bsc: {
       url: "https://data-seed-prebsc-1-s1.binance.org:8545",
       chainId: 97,

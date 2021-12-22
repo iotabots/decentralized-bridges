@@ -22,8 +22,8 @@ async function main() {
   const token = await Token.deploy();
   console.log("Token deployed to:", token.address);
 
-  await token.mint(recieverAddress, ethers.utils.parseEther("1000.0"));
-  console.log("Token minted to: ", recieverAddress);
+  // await token.mint(recieverAddress, ethers.utils.parseEther("1000.0"));
+  // console.log("Token minted to: ", recieverAddress);
 
   const Bridge = await ethers.getContractFactory("BridgeIotaEvm");
   const bridge = await Bridge.deploy(token.address);

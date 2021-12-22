@@ -5,9 +5,6 @@
 // Runtime Environment's members available in the global scope.
 import { ethers } from "hardhat";
 
-const TX_HASH =
-  "0x8661cb36c4b865d81c3862705fa3141ebf942c22260a3b4d155e0d2574034f51";
-
 async function main() {
   // Hardhat always runs the compile task when running scripts with its command
   // line interface.
@@ -16,23 +13,24 @@ async function main() {
   // manually to make sure everything is compiled
   // await hre.run('compile');
   const [owner] = await ethers.getSigners();
-  console.log("owner");
-  console.log(owner.address);
-  console.log("Account balance:", (await owner.getBalance()).toString());
+  console.log("owner: ", owner.address);
 
-  const url = "https://evm.wasp.sc.iota-defi.com";
-  const provider = new ethers.providers.JsonRpcProvider(url);
-  const a: any = await provider.getTransaction(TX_HASH);
-  console.log("a:", a);
-  try {
-    const code = await provider.call(a, a.blockNumber);
-    console.log("code:", code);
-  } catch (err: any) {
-    const code = err.data.replace("Reverted ", "");
-    console.log({ err });
-    const reason = ethers.utils.toUtf8String("0x" + code.substr(138));
-    console.log("revert reason:", reason);
-  }
+  const recieverAddress = "0x8719c0e3E5f950ae9b305feD9B2B2f830C127958";
+
+  // We get the contract to deploy
+  const Token = await ethers.getContractFactory("TokenIotaDefiEvm");
+  const token = await Token.deploy();
+  console.log("Token deployed to:", token.address);
+
+  await token.mint(recieverAddress, ethers.utils.parseEther("1000.0"));
+  console.log("Token minted to: ", recieverAddress);
+
+  const Bridge = await ethers.getContractFactory("BridgeIotaDefiEfm");
+  const bridge = await Bridge.deploy(token.address);
+  await bridge.deployed();
+  console.log("Bridge deployed to:", bridge.address);
+
+  await token.updateAdmin(bridge.address);
 }
 
 // We recommend this pattern to be able to use async/await everywhere
