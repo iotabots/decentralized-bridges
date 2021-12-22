@@ -1,0 +1,27 @@
+{
+  "name": "decentralized-bridges",
+  "version": "1.0.0",
+  "description": "owner 0xC6583b3A8e37324f836e6975C65241AB6e2d4F90 Account balance: 414796720000000000 Token deployed to: 0x48c560295504826f94CA0dfE120D4b540148D9b0 Token minted to:  0x757F541C9A5811003975fe35812AF2fD40EFF8E0 Bridge deployed to: 0x18076eee61806762750E8B5c20678EB4B05D695A",
+  "main": ".eslintrc.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@nomiclabs/hardhat-web3": "^2.0.0",
+    "web3": "^1.6.1"
+  },
+  "dependencies": {
+    "@nomiclabs/hardhat-etherscan": "^2.1.8",
+    "@nomiclabs/hardhat-waffle": "^2.0.1",
+    "@typechain/hardhat": "^3.0.0",
+    "express": "^4.17.2",
+    "hardhat": "^2.8.0",
+    "hardhat-gas-reporter": "^1.0.6",
+    "solidity-coverage": "^0.7.17"
+  }
+}
