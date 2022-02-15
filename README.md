@@ -1,5 +1,7 @@
 
-# Decentralized Bridges
+# Decentralized Bridge
+
+> This is just a demo - please do not use this in production!
 
 ![overview](docs/overview.drawio.svg)
 
